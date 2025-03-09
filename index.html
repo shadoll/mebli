@@ -8,14 +8,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; font-family: Arial, sans-serif; }
         .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: rgba(0, 0, 0, 0.7);
             color: white;
             text-align: center;
             padding: 15px;
             font-size: 24px;
             font-weight: bold;
-            position: relative;
-            overflow: hidden;
+            z-index: 10;
         }
         .header span {
             display: inline-block;
