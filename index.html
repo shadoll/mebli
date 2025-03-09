@@ -7,6 +7,24 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; font-family: Arial, sans-serif; }
+        .header {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        .header span {
+            display: inline-block;
+            animation: magnify 3s ease-in-out infinite alternate;
+        }
+        @keyframes magnify {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+        }
         .slider {
             display: grid;
             grid-template-rows: 1fr auto;
@@ -42,6 +60,9 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <span>m</span><span>e</span><span>b</span><span>.</span><span>l</span><span>i</span>
+    </div>
     <div class="slider">
         <div class="slides">
             <div class="slide active" style="background-image: url('wall1.jpg');"></div>
@@ -54,13 +75,25 @@
     <script>
         let index = 0;
         const slides = document.querySelectorAll('.slide');
+        const letters = document.querySelectorAll('.header span');
         
         function nextSlide() {
             slides[index].classList.remove('active');
             index = (index + 1) % slides.length;
             slides[index].classList.add('active');
         }
+
+        function animateText() {
+            letters.forEach((letter, i) => {
+                letter.style.animation = 'none';
+                setTimeout(() => {
+                    letter.style.animation = `magnify 3s ease-in-out ${i * 200}ms infinite alternate`;
+                }, 10);
+            });
+        }
+        
         setInterval(nextSlide, 3000);
+        animateText();
     </script>
 </body>
 </html>
